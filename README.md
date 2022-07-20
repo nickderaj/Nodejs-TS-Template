@@ -10,6 +10,10 @@ This is a Node.js starter template with TypeScript to easily get started on a pr
 
 - Express: most popular framework for Node.js.
 - Nodemon: to automatically update and refresh the server when you make changes.
+- Knex: to communicate with a db easily without having to manually type query strings.
+- Joi: to make pre-controller validations easily.
+- An example model/route/controller/validation for a generic 'Role' model which can be used to create other models.
+- An API Handling middleware to clean up routes.
 - ESlint + Prettier + Husky Git Hooks: to format the code and ensure that no matter who works on the code, it will stay formatted the same way.
 
 ## Project Setup
