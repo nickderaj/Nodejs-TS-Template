@@ -3,14 +3,11 @@
 const DB = require('../../db/knex');
 const { v4: uuidv4 } = require('uuid');
 const table = 'roles';
-
-export interface Role {
+export default class Role {
   id: string;
   name: string;
   description: string;
-}
 
-export class Role {
   constructor(payload: Role) {
     this.id = uuidv4();
     this.name = payload.name.toLowerCase();

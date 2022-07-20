@@ -1,5 +1,5 @@
 import { Request } from 'express';
-import { Role } from '../models/roleModel';
+import Role from '../models/roleModel';
 
 exports.getAll = async () => {
   const records = await Role.getAll();
