@@ -20,4 +20,6 @@ app.get('/', (req: Request, res: Response) => {
   });
 });
 
+app.use('/api/v1/roles', require('./routes/roleRoutes'));
+
 app.listen(port, () => console.log(`Running on port ${port}`));
