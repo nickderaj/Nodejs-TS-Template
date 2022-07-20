@@ -1,4 +1,3 @@
-import { Request } from 'express';
 import Role from '../models/roleModel';
 
 exports.getAll = async () => {
@@ -6,18 +5,18 @@ exports.getAll = async () => {
   return records ? { statusCode: 200, data: records } : { statusCode: 404, data: [] };
 };
 
-exports.getById = async (req: Request) => {
+exports.getById = async (req: { params: { id: string } }) => {
   const { id } = req.params;
   const record = await Role.getById(id);
   return record ? { statusCode: 200, data: record } : { statusCode: 404, data: {} };
 };
 
-exports.create = async (req: Request) => {
+exports.create = async (req: { body: Role }) => {
   const record = new Role(req.body);
   return (await record.save()) ? { statusCode: 201, data: record } : { statusCode: 422, data: 'unprocessable entity' };
 };
 
-exports.update = async (req: Request) => {
+exports.update = async (req: { body: Role; params: { id: string } }) => {
   const { id } = req.params;
   const payload = req.body;
   return (await Role.update(id, payload))
@@ -25,7 +24,7 @@ exports.update = async (req: Request) => {
     : { statusCode: 422, data: { message: 'unprocessable entity' } };
 };
 
-exports.delete = async (req: Request) => {
+exports.delete = async (req: { params: { id: string } }) => {
   const { id } = req.params;
   return (await Role.destroy(id)) ? { statusCode: 204, data: {} } : { statusCode: 422, data: 'unprocessable entity' };
 };

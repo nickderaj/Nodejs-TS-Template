@@ -1,6 +1,7 @@
 'use strict';
 
 import { NextFunction, Request, Response } from 'express';
+import Role from '../models/roleModel';
 
 const Joi = require('joi');
 const { roleNameInUse } = require('./helpers/validationHelpers');
@@ -16,7 +17,7 @@ exports.getAll = (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
-exports.getById = (req: Request, res: Response, next: NextFunction) => {
+exports.getById = (req: { params: { id: string } }, res: Response, next: NextFunction) => {
   try {
     const { id } = req.params;
     if (!id) res.status(400).json({ message: 'Id param is missing' });
@@ -28,7 +29,7 @@ exports.getById = (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
-exports.create = async (req: Request, res: Response, next: NextFunction) => {
+exports.create = async (req: { body: Role }, res: Response, next: NextFunction) => {
   try {
     const schema = Joi.object({
       name: Joi.string().required(),
@@ -46,7 +47,7 @@ exports.create = async (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
-exports.delete = (req: Request, res: Response, next: NextFunction) => {
+exports.delete = (req: { params: { id: string } }, res: Response, next: NextFunction) => {
   try {
     const { id } = req.params;
     if (!id) res.status(400).json({ message: 'Id param is missing' });
@@ -58,7 +59,7 @@ exports.delete = (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
-exports.update = async (req: Request, res: Response, next: NextFunction) => {
+exports.update = async (req: { body: Role; params: { id: string } }, res: Response, next: NextFunction) => {
   try {
     const { id } = req.params;
     if (!id) res.status(400).json({ message: 'Id param is missing' });
