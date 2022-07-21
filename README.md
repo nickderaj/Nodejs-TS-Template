@@ -3,6 +3,7 @@
 1. [Introduction](#introduction)
 2. [Project Setup](#project-setup)
 3. [Questions & Suggestions](#questions--suggestions)
+4. [Env Variables](#env-variables)
 
 ## Introduction
 
@@ -28,3 +29,18 @@ Note: This app was designed to only be used with yarn to prevent a `package-lock
 
 If you have any questions, feel free to reach out at nickderaj@gmail.com or message me on Discord at NickD#1188<br/>
 If there's something you think should be added, branch out and make a PR! :)
+
+## Env Variables
+
+```
+NODE_ENV= local/development/etc.
+
+DB_PORT= 5432
+DB_ENGINE= postgresql
+DB_HOST= localhost / heroku
+DB_NAME= sample_backend
+DB_USER_NAME= nick
+DB_USER_PASSWORD= password12345
+
+JWT_SECRET= superSecretString (for jason web tokens)
+```

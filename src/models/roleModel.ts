@@ -20,11 +20,11 @@ export default class Role {
   }
 
   static getAll() {
-    return DB(table).select('name', 'description');
+    return DB(table).select('id', 'name', 'description');
   }
 
   static getById(id: string) {
-    return DB(table).where({ id }).select('name', 'description').first();
+    return DB(table).where({ id }).select('id', 'name', 'description').first();
   }
 
   static destroy(id: string) {
